@@ -81,7 +81,7 @@ def define_stopwords():
 		print(f'sns_set stopwords = {len(sns_set)} words: \nExamples: \n{[x for x in sns_set[0:10]]}\n{[x for x in sns_set[10:20]]}')
 		my_stopwords = sns_set
 	else:
-		print(f'all_set (custom) stopwords) = {len(all_set)} words: \nExamples: \n{[x for x in all_set[0:10]]}\n{[x for x in all_set[10:20]]}')
+		print(f'all_set (custom) stopwords = {len(all_set)} words: \nExamples: \n{[x for x in all_set[0:10]]}\n{[x for x in all_set[10:20]]}')
 		my_stopwords = all_set
 	
 	return my_stopwords
