@@ -162,13 +162,13 @@ def df_field_col_len(df):
 	
 	for x, y in zip(list(df.columns.values), avg_len_i_list):
 		if [y[0]] == max(avg_len_i_list):
-		print("Longest average field length by word count found in '{0}' column (avg. {1:.0f} words).".format(x.replace("\n", ""), y[0]))
+			print("Longest average field length by word count found in '{0}' column (avg. {1:.0f} words).".format(x.replace("\n", ""), y[0]))
 	
 	longest = ''
 	
 	for x, y in zip(list(df.columns.values), avg_len_i_list):
 		if [y[0]] == max(avg_len_i_list):
-		longest = x
+			longest = x
     
 	print("Preprocessing '{}' column from corpus...".format(longest))
 	
