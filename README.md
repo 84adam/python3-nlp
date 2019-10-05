@@ -36,3 +36,5 @@ REQUIRED: Python 3.6+
 Example of Topics Derived:
 
 <WIP>
+  
+<WIP: Inference program, using the saved model>
