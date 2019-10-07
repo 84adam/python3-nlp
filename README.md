@@ -41,6 +41,25 @@ REQUIRED: Python 3.6+
    
 Example of Topics Derived:
 
-<WIP>
-  
+```
+Topic #0: 0.005*"tourism" + 0.003*"travel" + 0.002*"tourist" + 0.002*"gnd" + 0.002*"aircraft" + 0.002*"tour" + 0.001*"industri" + 0.001*"citi" + 0.001*"roman" + 0.001*"flight"
+Topic #1: 0.003*"engin" + 0.003*"manag" + 0.002*"transport" + 0.002*"social" + 0.002*"softwar" + 0.002*"econom" + 0.002*"busi" + 0.002*"system" + 0.002*"design" + 0.002*"tourism"
+Topic #2: 0.004*"game" + 0.003*"bu" + 0.003*"water" + 0.002*"servic" + 0.002*"media" + 0.002*"fare" + 0.002*"digit" + 0.002*"compani" + 0.002*"travel" + 0.002*"hotel"
+Topic #3: 0.004*"mathemat" + 0.003*"philosophi" + 0.003*"theori" + 0.003*"displaystyl" + 0.003*"logic" + 0.003*"philosoph" + 0.002*"scienc" + 0.002*"knowledg" + 0.002*"softwar" + 0.002*"comput"
+Topic #4: 0.005*"engin" + 0.002*"univers" + 0.002*"scienc" + 0.002*"system" + 0.002*"professor" + 0.002*"award" + 0.002*"electr" + 0.002*"transistor" + 0.002*"mathemat" + 0.002*"robot"
+Topic #5: 0.003*"parser" + 0.002*"milki" + 0.002*"award" + 0.002*"galaxi" + 0.002*"output" + 0.002*"locomot" + 0.001*"svg" + 0.001*"ubuntu" + 0.001*"stone" + 0.001*"design"
+Topic #6: 0.003*"heat" + 0.003*"thermodynam" + 0.003*"energi" + 0.002*"sale" + 0.002*"compani" + 0.001*"sector" + 0.001*"tourism" + 0.001*"market" + 0.001*"busi" + 0.001*"steam"
+Topic #7: 0.004*"energi" + 0.003*"electr" + 0.003*"solar" + 0.003*"wind" + 0.002*"confucian" + 0.002*"ga" + 0.002*"law" + 0.002*"turbin" + 0.002*"power" + 0.002*"magnet"
+Topic #8: 0.004*"compani" + 0.003*"app" + 0.003*"corpor" + 0.002*"sharehold" + 0.002*"jstor" + 0.002*"oil" + 0.002*"busi" + 0.002*"director" + 0.002*"store" + 0.001*"commun"
+Topic #9: 0.004*"isbn" + 0.003*"brahman" + 0.002*"hindu" + 0.002*"yoga" + 0.002*"vedanta" + 0.002*"philosophi" + 0.002*"hinduism" + 0.002*"digit" + 0.002*"buddhism" + 0.002*"jain"
+```
+
+### Infer Topics of New, Unseen Document
+
+**`infer_topics.py`**:
+
+- requires a text string as input
+- requires that saved gensim model and dictionaries be present in the same directory
+  - `tf-lda.model` and `tf-idf.dict`
+
 <WIP: Inference program, using the saved model>
