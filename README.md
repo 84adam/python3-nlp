@@ -61,5 +61,3 @@ Topic #9: 0.004*"isbn" + 0.003*"brahman" + 0.002*"hindu" + 0.002*"yoga" + 0.002*
 - requires a text string as input
 - requires that saved gensim model and dictionaries be present in the same directory
   - `tf-lda.model` and `tf-idf.dict`
-
-<WIP: Inference program, using the saved model>
