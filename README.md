@@ -24,6 +24,7 @@ REQUIRED: Python 3.6+
 ### LDA Model Training
   
 - `ppt_model.py` accepts a pickle-formatted file representing the preprocessed text
+  - If you wish you can use the preprocessed `.pkl` file produced from the sample `wiki_df.csv` file linked above. Download this proprocessed set of Wikipedia articles [here](https://www.dropbox.com/s/picanyvasfrc91g/processed_docs.pkl?dl=0).
   - This is loaded into memory and a dictionary is created using Gensim
   - Subsequently, Topic Model training is initialized
   - Hyperparameters can be defined by passing command-line arguments to `ppy_model.py`
