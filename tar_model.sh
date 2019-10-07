@@ -3,8 +3,14 @@
 DT=$(date '+%s')
 
 # save model
-mkdir -p saved-model-$DT;
-cp ./tf-lda* saved-model-$DT/;
-tar czf saved-model-$DT.tar.gz saved-model-$DT/;
-chmod 666 saved-model-$DT.tar.gz;
-cp saved-model-$DT.tar.gz $HOME/
+mkdir -p models/saved-model;
+
+if [ -f "models/saved-model.tar.gz" ]; 
+	then mv models/saved-model.tar.gz models/saved_model_$DT.tar.gz;
+fi
+
+mv -f ./tf-lda* models/saved-model/;
+
+tar czf models/saved-model.tar.gz models/saved-model/;
+chmod 666 models/saved-model.tar.gz;
+cp models/saved-model.tar.gz $HOME/
