@@ -19,6 +19,7 @@ REQUIRED: Python 3.6+
     - tokenization
   - The result of the preprocessing step is a pickled Pandas Series object: 'processed_docs.pkl'
   - As an example, you can use a collection of Wikipedia articles. Download an example set [here](https://www.dropbox.com/s/45s8t1y0ixxe4zh/wiki_df.csv?dl=0) (10,000+ articles).
+  - Use **`get_wiki.py`** to download your own set of articles from Wikipedia, changing the list of top-level URLs from which to scrape articles (and those of articles linked within each of these documents). NOTE: Choosing ~24 generic topics, and recursing down one level to all linked articles, results in ~10,000 articles being downloaded.
   
 ### LDA Model Training
   
