@@ -4,6 +4,8 @@ SEE: https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation
 
 REQUIRED: Python 3.6+
 
+### Text Preprocessing
+
 - `preprocess.py` accepts a local CSV file as input
   - The CSV file can contain any number of documents or strings of arbitary length in a given column
   - `preprocess.py` will automatically locate the column with the largest amount of text in terms of average words per cell in a given column
@@ -16,6 +18,9 @@ REQUIRED: Python 3.6+
     - lemmatization and stemming
     - tokenization
   - The result of the preprocessing step is a pickled Pandas Series object: 'processed_docs.pkl'
+  - As an example, you can use a collection of Wikipedia articles. Download an example set [here](https://www.dropbox.com/s/45s8t1y0ixxe4zh/wiki_df.csv?dl=0) (10,000+ articles).
+  
+### LDA Model Training
   
 - `ppt_model.py` accepts a pickle-formatted file representing the preprocessed text
   - This is loaded into memory and a dictionary is created using Gensim
