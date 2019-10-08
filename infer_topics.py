@@ -120,7 +120,7 @@ def word_split(doc):
 	return words
 
 
-# Perform Topic Probability Distribution on an Unseen Document
+# Infer Topic Probability Distribution of New Document
 
 def infer_topic(new_doc):
     print("(1) Performing preprocessing...")
