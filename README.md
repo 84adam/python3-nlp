@@ -61,4 +61,15 @@ Topic #9: 0.004*"isbn" + 0.003*"brahman" + 0.002*"hindu" + 0.002*"yoga" + 0.002*
 
 - requires a text string as input
 - requires that saved gensim model and dictionaries be present in the same directory
-  - `tf-lda.model` and `tf-idf.dict`
+  - `tf-lda.model` and `tf-lda.dict`
+  
+### Compare the Topic Probability Distributions of Any Two Documents
+
+**`jsd_topics.py`**:
+
+- requires two text strings as input (e.g. use `"$(cat doc1.txt)" $(cat doc2.txt)"`)
+- requires the model files and stopword files be available on the local filesystem
+  - `tf-lda.model`, `tf-lda.dict`, `stop.txt`, `unstop.txt`
+- returns a Jensen-Shannon Distance score indicating how similar or different the two documents are from each other
+  - a lower score (closer to 0) means the two documents are similar
+  - a higher score (closer to 1) means the documents are different
