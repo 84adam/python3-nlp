@@ -67,9 +67,11 @@ Topic #9: 0.004*"isbn" + 0.003*"brahman" + 0.002*"hindu" + 0.002*"yoga" + 0.002*
 
 **`jsd_topics.py`**:
 
-- requires two text strings as input (e.g. use `"$(cat doc1.txt)" $(cat doc2.txt)"`)
-- requires the model files and stopword files be available on the local filesystem
-  - `tf-lda.model`, `tf-lda.dict`, `stop.txt`, `unstop.txt`
+- requires two text strings as input (ex. use `"$(cat doc1.txt)" "$(cat doc2.txt)"`)
+  - these are `sys.argv[2]` and `sys.argv[3]` (second and third arguments)
+- requires the Gensim LDA model files and stopword files be available on the local filesystem
+  - Provide the PATH for: `tf-lda.model`, `tf-lda.dict`, `stop.txt`, `unstop.txt` as `sys.argv[1]` (first argument)
+  - `stop.txt` and `unstop.txt` can be empty, but must exist in the PATH specified
 - returns a Jensen-Shannon Distance score indicating how similar or different the two documents are from each other
   - a lower score (closer to 0) means the two documents are similar
   - a higher score (closer to 1) means the documents are different
