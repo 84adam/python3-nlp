@@ -23,22 +23,20 @@ REQUIRED: Python 3.6+
   
 ### LDA Model Training
   
-- `ppt_model.py` accepts a pickle-formatted file representing the preprocessed text
+- `train_model.py` accepts a pickle-formatted file representing the preprocessed text
   - If you wish you can use the preprocessed `.pkl` file produced from the sample `wiki_df.csv` file linked above. Download this proprocessed set of Wikipedia articles [here](https://www.dropbox.com/s/picanyvasfrc91g/processed_docs.pkl?dl=0).
   - This is loaded into memory and a dictionary is created using Gensim
   - Subsequently, Topic Model training is initialized
-  - Hyperparameters can be defined by passing command-line arguments to `ppy_model.py`
-  - Alternatively, if using Docker **[WIP]**, the script `lda_train.sh` can be used to pass default arguments:
-    - `lda_train.sh` contains a set of recommended hyperparameters for model-training
-    - These are passed from the bash script as arguments to the Docker image:
-      - `dict_no_below = 20` - no words appearing less than {n} times in the corpus
-      - `dict_no_above = 0.85` - no words appearing in more than {n}% of all documents in the corpus
-      - `dict_keep_n = 100000` - dictionary to be comprised of a maximum of {n} features
-      - `num_topics = 10` - create a model with {n} topics
-      - `num_passes = 2` - perform {n} passes through the corpus during model training
-      - `workers = 2` - use {n} CPU cores during model training - recommended formula: `$ echo "$(nproc) - 1" | bc` to take advantage of LdaMulticore in Gensim
-      - `processed_docs = pd.read_pickle('processed_docs.pkl')` - provide the name of a pickle-formatted file containing a Pandas Series object with preprocessed text
-   - The output of the `ppt_model.py` program is a list of topics that have been derived from the corpus of preprocessed documents, as well as an archive containing all of the Gensim model, dictionary, and state files.
+  - Hyperparameters can be defined by passing command-line arguments to `train_model.py`, for example:
+    - `dict_no_below = 20` - no words appearing less than {n} times in the corpus
+    - `dict_no_above = 0.85` - no words appearing in more than {n}% of all documents in the corpus
+    - `dict_keep_n = 100000` - dictionary to be comprised of a maximum of {n} features
+    - `num_topics = 10` - create a model with {n} topics
+    - `num_passes = 2` - perform {n} passes through the corpus during model training
+    - `workers = 2` - use {n} CPU cores during model training - recommended formula: `$ echo "$(nproc) - 1" | bc` to take advantage of LdaMulticore in Gensim
+    - `processed_docs = pd.read_pickle('processed_docs.pkl')` - provide the name of a pickle-formatted file containing a Pandas Series object with preprocessed text
+   - The output of `train_model.py` is a list of topics that have been derived from the corpus of preprocessed documents.
+   - The Gensim model files, state, and dictionary are saved to the current directory, as well as backed up to ./models/saved-model/, using the accompanying bash script: `tar_model.sh`.
    
 Example of Topics Derived:
 
