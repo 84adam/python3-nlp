@@ -3,8 +3,9 @@ requests
 pandas
 keras
 tensorflow
-gensim
+gensim >= 3.8.1
 numpy
 nltk
 spacy
 sklearn
+scipy
