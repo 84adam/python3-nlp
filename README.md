@@ -28,10 +28,10 @@ REQUIRED: Python 3.6+
   - This is loaded into memory and a dictionary is created using Gensim
   - Subsequently, Topic Model training is initialized
   - Hyperparameters can be defined by passing command-line arguments to `train_model.py`, for example:
-    - `dict_no_below = 20` - no words appearing less than {n} times in the corpus
-    - `dict_no_above = 0.85` - no words appearing in more than {n}% of all documents in the corpus
+    - `dict_no_below = 30` - no words appearing less than {n} times in the corpus
+    - `dict_no_above = 0.70` - no words appearing in more than {n}% of all documents in the corpus
     - `dict_keep_n = 100000` - dictionary to be comprised of a maximum of {n} features
-    - `num_topics = 10` - create a model with {n} topics
+    - `num_topics = 20` - create a model with {n} topics
     - `num_passes = 2` - perform {n} passes through the corpus during model training
     - `workers = 2` - use {n} CPU cores during model training
       - Recommended formula for `workers`: `$ echo "$(nproc) - 1" | bc`
