@@ -2,9 +2,7 @@
 
 SEE: https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation
 
-REQUIRED: 
-- Python 3.6+
-- gensim 3.8.1+
+**REQUIRED: Python 3.6+**
 
 ### Text Preprocessing
 
