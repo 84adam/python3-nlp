@@ -33,7 +33,9 @@ REQUIRED: Python 3.6+
     - `dict_keep_n = 100000` - dictionary to be comprised of a maximum of {n} features
     - `num_topics = 10` - create a model with {n} topics
     - `num_passes = 2` - perform {n} passes through the corpus during model training
-    - `workers = 2` - use {n} CPU cores during model training - recommended formula: `$ echo "$(nproc) - 1" | bc` to take advantage of LdaMulticore in Gensim
+    - `workers = 2` - use {n} CPU cores during model training
+      - Recommended formula for `workers`: `$ echo "$(nproc) - 1" | bc`
+      - Using 2 or more CPU cores allows you to take advantage of LdaMulticore in Gensim.
     - `processed_docs = pd.read_pickle('processed_docs.pkl')` - provide the name of a pickle-formatted file containing a Pandas Series object with preprocessed text
    - The output of `train_model.py` is a list of topics that have been derived from the corpus of preprocessed documents.
    - The Gensim model files, state, and dictionary are saved to the current directory, as well as backed up to ./models/saved-model/, using the accompanying bash script: `tar_model.sh`.
