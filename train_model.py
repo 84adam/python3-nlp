@@ -21,8 +21,8 @@ if len(arguments) < 7:
     print("(4) num_topics; (5) num_passes; (6) workers")
     print("(7) processed_docs pkl file")
     print("\nSuggested Defaults: ")
-    print("(1) 20; (2) 0.85; (3) 100000;")
-    print("(4) 10; (5) 2; (6) 2 [or: `nproc` - 1].")
+    print("(1) 30; (2) 0.70; (3) 100000;")
+    print("(4) 20; (5) 2; (6) 2 [or: `nproc` - 1].")
     print("(y) processed_docs.pkl.\n")
     sys.exit(2)
 
@@ -78,17 +78,19 @@ print(f'dict_no_below={dict_no_below}; dict_no_above={dict_no_above}; dict_keep_
 for x, y in zip(range_num_topics, tf_set):
   print(f'\nTF-IDF model with {x} topics: \n')
   for idx, topic in y.print_topics():
-    print(f'Topic #{idx + 1}: {topic}')
+    print(f'Topic #{idx}: {topic}')
 
 print()
 
 # save trained model
+# saves only the first trained model
 
 filename_model = 'tf-lda.model'
 filename_dict = 'tf-lda.dict'
 tf_set[0].save(filename_model)
 dictionary.save(filename_dict)
 
+print("\nModel saved to current directory.")
 
 def subprocess_cmd(command):
     process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
@@ -96,3 +98,6 @@ def subprocess_cmd(command):
     print(proc_stdout)
 
 subprocess_cmd('bash tar_model.sh')
+
+print("Model(s) backed up to ./models/saved-model")
+print("DONE.")
