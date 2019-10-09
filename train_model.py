@@ -74,8 +74,7 @@ for i in range_num_topics:
   
   count += 1
   
-print(f'MODELS TRAINED - TF-IDF: {len(tf_set)} models; No. Passes: {num_passes}')
-print(f'dict_no_below={dict_no_below}; dict_no_above={dict_no_above}; dict_keep_n={dict_keep_n}')
+print(f'\nGensim LDA & TF-IDF model trained with {num_topics} topics: \n')
 
 for x, y in zip(range_num_topics, tf_set):
   print(f'\nTF-IDF model with {x} topics: \n')
