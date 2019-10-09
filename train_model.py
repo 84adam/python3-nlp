@@ -37,7 +37,7 @@ dictionary = gensim.corpora.Dictionary(processed_docs)
 print(f'Unfiltered dictionary contains {len(list(dictionary.values()))} features.')
 
 # filter dictionary
-Print("Filtering...")
+print("Filtering...")
 dictionary.filter_extremes(no_below=dict_no_below, no_above=dict_no_above, keep_n=dict_keep_n)
 print(f'Filtered dictionary contains {len(list(dictionary.values()))} features.')
 
@@ -81,10 +81,7 @@ for x, y in zip(range_num_topics, tf_set):
   for idx, topic in y.print_topics():
     print(f'Topic #{idx}: {topic}')
 
-print()
-
 # save trained model
-# saves only the first trained model
 
 filename_model = 'tf-lda.model'
 filename_dict = 'tf-lda.dict'
@@ -92,6 +89,7 @@ tf_set[0].save(filename_model)
 dictionary.save(filename_dict)
 
 print("\nModel saved to current directory.")
+print("Backing up model(s)...")
 
 def subprocess_cmd(command):
     process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
@@ -101,4 +99,4 @@ def subprocess_cmd(command):
 subprocess_cmd('bash tar_model.sh')
 
 print("Model(s) backed up to ./models/saved-model")
-print("DONE.")
+print("DONE.\n")
