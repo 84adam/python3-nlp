@@ -6,10 +6,10 @@ SHARED_PATH="$HOME/lda_model"
 
 # HYPERPARAMETERS
 
-NO_BELOW=${2:-20}
-NO_ABOVE=${3:-0.85}
+NO_BELOW=${2:-30}
+NO_ABOVE=${3:-0.70}
 KEEP_N=${4:-100000}
-TOPICS=${5:-10}
+TOPICS=${5:-20}
 PASSES=${6:-2}
 WORKERS=${7:-2}
 DOCS=${8:-processed_docs.pkl}
