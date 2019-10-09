@@ -5,13 +5,9 @@ import numpy as np
 import sys
 import subprocess
 import shlex
-
 from gensim import corpora, models
 
 # build topic model
-
-# set filters
-print("Hyperparameters used in model training: ")
 
 arguments = sys.argv[1:]
 
@@ -35,19 +31,23 @@ workers = int(sys.argv[6])
 
 processed_docs = pd.read_pickle(sys.argv[7])
 
-# build dictionary
+# load dictionary
+print("\nLoading data...")
 dictionary = gensim.corpora.Dictionary(processed_docs)
+print(f'Unfiltered dictionary contains {len(list(dictionary.values()))} features.')
 
+print("\nInitializing model training...\n")
+
+dictionary.filter_extremes(no_below=dict_no_below, no_above=dict_no_above, keep_n=dict_keep_n)
+
+print(f'\nFiltered dictionary contains {len(list(dictionary.values()))} features.')
+print("\nHyperparameters used: ")
 print(f'dict_no_below = {dict_no_below}')
 print(f'dict_no_above = {dict_no_above}')
 print(f'dict_keep_n = {dict_keep_n}')
 print(f'num_topics = {num_topics}')
 print(f'num_passes = {num_passes}')
 print(f'workers = {workers}')
-
-print("\nInitializing model training...\n")
-
-dictionary.filter_extremes(no_below=dict_no_below, no_above=dict_no_above, keep_n=dict_keep_n)
 
 bow_corpus = [dictionary.doc2bow(doc) for doc in processed_docs]
 
