@@ -28,8 +28,19 @@ def interp_pairwise_jsd(t_dist):
 			
 	present = list(set(present))
 	
+	all_missing = []
+
+	for i in present:
+		my_range = range(0, len(present))
+		all_missing.append([x for x in my_range if x not in present])
+
+	all_missing = all_missing[0]
+	
+	print()	
 	print("z_topics: ", z_topics)
 	print("all topics present: ", present)
+	print("all topics missing: ", all_missing)
+	print()
 	print("interpolating missing topic probabilities...")
 	
 	fixed_t_dist = []
@@ -49,7 +60,9 @@ def interp_pairwise_jsd(t_dist):
 	
 	Z3 = np.array([x[1] for x in fixed_t_dist])
 	
+	print("\nJensen-Shannon Distance Matrix: \n")
 	return pairwise_jsd(Z3)
+	print()
 	
 # sample distributions
 
@@ -64,4 +77,6 @@ v_H = [(2, 0.058049496), (9, 0.72442913), (17, 0.19779378), (18, 0.014589181)]
 
 t_dist = [v_A, v_B, v_C, v_D, v_E, v_F, v_G, v_H]
 
-interp_pairwise_jsd(t_dist)
+# interp_pairwise_jsd(t_dist)
+print(interp_pairwise_jsd(t_dist))
+print()
