@@ -117,3 +117,11 @@ Jensen-Shannon Distance Matrix:
  0.05021582 0.00247222 0.05021582 0.05797268 0.04815683 0.
  0.09937985 0.04815683 0.06027675 0.09937985]
 ```
+
+### Sample Search API: `search.py` <WIP> ###
+
+- Launches a Flask server with a '/search' route on the local machine at port 5000
+- Run `search.py` with Python and then navigate to 127.0.0.1:5000/search in your browser
+- You will be presented with a search form
+- Enter a query and hit submit
+- The query is combined with a random query_id, source, and timestamp and returned in the browser
