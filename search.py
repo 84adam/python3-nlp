@@ -14,7 +14,7 @@ def get_ts():
 
 def gen_json(doc):
 	query_text = doc
-	source = "Support Search Bar"
+	source = "Search Bar"
 	query_id = rand_id(10)
 	query_ts = get_ts()
 	q_dict = ({'source': f'{source}', 'query_id': f'{query_id}', 'query_ts': f'{query_ts}', 'query_text': f'{query_text}'})
