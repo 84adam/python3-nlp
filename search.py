@@ -28,14 +28,14 @@ app = Flask(__name__)
 # present search form, allow user submission
 # return query string and JSON object with query text, source, id, and timestamp
 def search():
-    if request.method == 'POST':
-        query = request.form.get('query')
-        new_json = gen_json(query)
-	return f'''<h2>You entered: "{query}"</h2><p>JSON: </p><p>{new_json}</p>'''
-    return '''<form method="POST">
-    Search Terms: <input type="text" name="query">
-    <input type="submit">
-    </form>'''
+  if request.method == 'POST':
+    query = request.form.get('query')
+    new_json = gen_json(query)
+    return f'''<h2>You entered: "{query}"</h2><p>JSON: </p><p>{new_json}</p>'''
+  return '''<form method="POST">
+  Search Terms: <input type="text" name="query">
+  <input type="submit">
+  </form>'''
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+  app.run(debug=True, port=5000)
