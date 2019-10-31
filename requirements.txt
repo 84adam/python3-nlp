@@ -10,6 +10,4 @@ spacy
 sklearn
 scipy
 flask
-random
-calendar
 datetime
