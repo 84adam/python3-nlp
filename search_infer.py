@@ -77,6 +77,7 @@ def load_model():
   filename_dict = filepath + '/' + 'tf-lda.dict'
   model = gensim.models.LdaModel.load(filename_model)
   dictionary = corpora.Dictionary.load(filename_dict)
+  return model, dictionary
 
 app = Flask(__name__)
 
@@ -96,7 +97,9 @@ def search():
 
 if __name__ == '__main__':
   # load model and model dictionary files
-  load_model()
+  topic_model = load_model()
+  model = topic_model[0]
+  dictionary = topic_model[1]
   
   # start server
   app.run(debug=True, port=5000)
