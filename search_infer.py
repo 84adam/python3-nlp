@@ -41,13 +41,13 @@ def preprocess(text):
   result = []
   for token in gensim.utils.simple_preprocess(text):
     if token not in my_stopwords and len(token) > 2:
-    result.append(lemmatize_stemming(token))
+      result.append(lemmatize_stemming(token))
   return result
 
 def word_split(doc):
   words = []
   for word in doc.split(' '):
-  words.append(word)
+    words.append(word)
   return words
 
 def flatten_text(doc):
