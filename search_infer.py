@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 from nltk.stem import WordNetLemmatizer, SnowballStemmer
 from nltk.stem.porter import *
+nltk.download('wordnet')
 from gensim.utils import simple_preprocess
 from gensim import corpora, models
 from keras.preprocessing.text import text_to_word_sequence
@@ -84,7 +85,11 @@ def search():
   if request.method == 'POST':
     query = request.form.get('query')
     new_json = gen_json(query)
-    return f'''<h3>You entered: "{query}"</h3><p>JSON: </p><p>{new_json}</p><p>List of Model Topics:</p><p>{model_topics}</p>'''
+    return f'''<h4>You entered: "<i>{query}</i>"</h4>
+               <h4>Results (JSON):</h4>
+               <p>{new_json}</p>
+               <h4>List of Model Topics:</h4>
+               <p><font size="2">{model_topics}</font></p>'''
   return '''<form method="POST">
   Search Terms: <input type="text" name="query">
   <input type="submit">
@@ -98,6 +103,7 @@ if __name__ == '__main__':
   model_topics = []
   for i in range(0, model.num_topics):
     model_topics.append(f'Topic #{i}: {model.print_topic(i)}')
+  model_topics = '<br>'.join([f'{str(x)}' for x in model_topics])
   
   # start server, await user queries
-  app.run(debug=True, port=5000)
+  app.run(debug=True, host="127.0.0.1", port=5000)
