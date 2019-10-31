@@ -9,3 +9,8 @@ nltk
 spacy
 sklearn
 scipy
+flask
+json
+random
+calendar
+datetime
