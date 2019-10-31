@@ -84,7 +84,7 @@ def search():
   if request.method == 'POST':
     query = request.form.get('query')
     new_json = gen_json(query)
-    return f'''<h3>You entered: "{query}"</h3><p>JSON: </p><p>{new_json}</p><br><p>{[x for x in model_topics]}</p>'''
+    return f'''<h3>You entered: "{query}"</h3><p>JSON: </p><p>{new_json}</p><p>List of Model Topics:</p><p>{model_topics}</p>'''
   return '''<form method="POST">
   Search Terms: <input type="text" name="query">
   <input type="submit">
