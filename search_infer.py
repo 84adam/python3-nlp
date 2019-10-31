@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 from nltk.stem import WordNetLemmatizer, SnowballStemmer
 from nltk.stem.porter import *
-nltk.download('wordnet')
+# nltk.download('wordnet')
 from gensim.utils import simple_preprocess
 from gensim import corpora, models
 from keras.preprocessing.text import text_to_word_sequence
