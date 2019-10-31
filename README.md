@@ -25,6 +25,7 @@ SEE: https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation
   
 - `train_model.py` accepts a pickle-formatted file representing the preprocessed text
   - If you wish you can use the preprocessed `.pkl` file produced from the sample `wiki_df.csv` file linked above. Download this preprocessed set of Wikipedia articles [here](https://www.dropbox.com/s/picanyvasfrc91g/processed_docs.pkl?dl=0).
+  - Example command: `python3 train_model.py 30 0.7 100000 20 2 2 processed_docs.pkl`
   - This is loaded into memory and a dictionary is created using Gensim
   - Subsequently, Topic Model training is initialized
   - Hyperparameters can be defined by passing command-line arguments to `train_model.py`, for example:
