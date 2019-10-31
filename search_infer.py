@@ -101,8 +101,3 @@ if __name__ == '__main__':
   
   # start server, await user queries
   app.run(debug=True, port=5000)
-
-  # print model topics
-  print("\n*** original model topics ***\n")
-  for i in range(0, model.num_topics):
-    print(f'Topic #{i}: {model.print_topic(i)}')
