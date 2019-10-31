@@ -50,20 +50,15 @@ def word_split(doc):
     words.append(word)
   return words
 
-def flatten_text(doc):
-  output = ' '.join([w for w in text_to_word_sequence(str(doc))])
-  return output
-
 # infer topics from query and produce JSON object as output
 def gen_json(doc):
   query_text = doc
-  flat = flatten_text(query_text)
   tokens = preprocess(doc)
   vector = infer_topic(tokens)
   source = "Search Bar"
   query_id = rand_id(10)
   query_ts = get_ts()
-  q_dict = ({'source': f'{source}', 'query_id': f'{query_id}', 'query_ts': f'{query_ts}', 'query_text': f'{query_text}', 'flat': f'{flat}', 'tokens': f'{tokens}', 'topics': f'{vector}'})
+  q_dict = ({'source': f'{source}', 'query_id': f'{query_id}', 'query_ts': f'{query_ts}', 'query_text': f'{query_text}', 'tokens': f'{tokens}', 'topics': f'{vector}'})
   return json.dumps(q_dict)
  
 def infer_topic(tokens):
@@ -89,7 +84,7 @@ def search():
   if request.method == 'POST':
     query = request.form.get('query')
     new_json = gen_json(query)
-    return f'''<h2>You entered: "{query}"</h2><p>JSON: </p><p>{new_json}</p>'''
+    return f'''<h3>You entered: "{query}"</h3><p>JSON: </p><p>{new_json}</p><br><p>{[x for x in model_topics]}</p>'''
   return '''<form method="POST">
   Search Terms: <input type="text" name="query">
   <input type="submit">
@@ -100,12 +95,12 @@ if __name__ == '__main__':
   topic_model = load_model()
   model = topic_model[0]
   dictionary = topic_model[1]
+  model_topics = []
+  for i in range(0, model.num_topics):
+    model_topics.append(f'Topic #{i}: {model.print_topic(i)}')
   
-  # start server
+  # start server, await user queries
   app.run(debug=True, port=5000)
-
-  # output = gen_json(query)
-  # print(output)
 
   # print model topics
   print("\n*** original model topics ***\n")
