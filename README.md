@@ -68,6 +68,21 @@ Topic #18: 0.009*"glossari" + 0.009*"milki" + 0.005*"galaxi" + 0.004*"award" + 0
 Topic #19: 0.002*"ticket" + 0.002*"confucian" + 0.002*"philosoph" + 0.002*"bicycl" + 0.002*"yang" + 0.002*"court" + 0.002*"rope" + 0.002*"fallibil" + 0.002*"law" + 0.002*"pharmaci"
 ```
 
+### Evaluate Trained Models
+
+**`evaluate.py`**:
+
+- requires model, corpus, and dictionary files in the current working directory
+- loads the above and calculates Model Perplexity and Model Coherence scores
+- for each a higher score is better:
+  - e.g. for log perplexity: -13.5 is better than -15.5
+  - e.g. for coherence: -1.5 is better than -3.5
+- if you train models with different hyperparameters, you can compare the resulting models
+- consider retraining and evaluating models with different values for `num_passes` and `num_topics` at the very least
+- you can use these metrics along with your own best judgment to select the best model to use for topic inference
+- good metrics alone won't necessarily lead to a useful or interpretable set of topics for your model
+- learn more: https://towardsdatascience.com/evaluate-topic-model-in-python-latent-dirichlet-allocation-lda-7d57484bb5d0
+
 ### Infer Topics of New, Unseen Document
 
 **`infer_topics.py`**:
