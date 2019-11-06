@@ -11,3 +11,4 @@ sklearn
 scipy
 flask
 datetime
+pyLDAvis
