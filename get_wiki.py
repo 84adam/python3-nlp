@@ -133,7 +133,7 @@ def wiki_all_text(url_list):
   for i in url_list:
     print("Fetching text from: {}".format(i))
     all_docs.append(wiki_text(i))
-    time.sleep(2)
+    time.sleep(0.5)
   print("Download complete.\n")
   return all_docs
 
