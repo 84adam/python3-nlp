@@ -289,7 +289,7 @@ if __name__ == '__main__':
   thresh = 1 # Return top 1% of matches.
   
   print("Loading model...")
-  num_topics = input("How many topics were used to train this model? ")
+  num_topics = int(input("How many topics were used to train this model? "))
 
   topic_model = load_model()
   model = topic_model[0]
