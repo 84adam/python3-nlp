@@ -134,11 +134,18 @@ Jensen-Shannon Distance Matrix:
  0.09937985 0.04815683 0.06027675 0.09937985]
 ```
 
-### Topic Inference on a Web Search Query: `search_infer.py` <WIP> ###
+### Topic Inference on a Web Search Query: `search_infer.py`
 
 - Loads a pretrained model and launches a Flask server with a '`/search`' route on the local machine at port `5000`
 - Run `search_infer.py` with Python and then navigate to http://127.0.0.1:5000/search in your browser
 - You will be presented with a search form; Enter a query and hit submit
 - The query is combined with a random query_id, source, and timestamp and returned in JSON format after Topic Inference
 - Inferred Query Topics, and the Original Model Topics List, are presented back to the user once this is complete
-- Inference takes a few seconds to complete, generally speaking
+
+## Full Search Engine using Pre-trained Model: `search_app.py`
+
+- Set hostname/IP address and port prior to running.
+- Run `search_app.py` using Python 3.6+.
+- Loads a model and set of candidate documents of your choosing.
+- User input query is processed, modeled, and compared to candidate documents. Distance between the query and a given candidate's topic probability distributions is measured using Jensen-Shannon Distance.
+- The top 1% of candidate documents are returned to the user as search results.
