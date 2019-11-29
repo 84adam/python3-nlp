@@ -241,11 +241,9 @@ def gen_json_results(vector, compare_docs, thresh):
     ajc = aj.map(confidence)
     rwf = rw.map(flatten_text)
     # sort and jsonify results
-#     results_df = pd.DataFrame({'title': [x for x in tt], 'raw': [x for x in rw], 'score': [f'{x:.0f}' for x in ajc], 'topics': [x for x in tp]})
     results_df = pd.DataFrame({'title': [x for x in tt], 'score': [f'{x:.0f}' for x in ajc], 'text': [x[0:500] for x in rwf], 'topics': [x for x in tp]})
     results_df = results_df.sort_values(by=['score'], ascending=[False])
     r_json = results_df.to_json(orient='index')
-    # json_obj = json.dumps(r_json)
     return r_json, results_df
 
 def format_results(df):
