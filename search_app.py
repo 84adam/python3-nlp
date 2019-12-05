@@ -295,23 +295,5 @@ if __name__ == '__main__':
   model = topic_model[0]
   dictionary = topic_model[1]
 
-  # METHOD TO BUILD CANDIDATE DOCS CORPUS USING PRE-TRAINED MODEL:
-  # corpus_filename = input("Enter name of corpus on which to model topic vectors: ")
-  # save_name = input("Save candidate corpus as (enter a filename[.pkl]): ")
-  # save_name = save_name + ".pkl"
-  # model = gensim.models.LdaModel.load(filename_model)
-  # dictionary = corpora.Dictionary.load(filename_dict)
-  # n_features = len(list(dictionary.values()))
-  # topics = []
-  # for i in tokens:
-  #   result = interp_topics(infer_topic(i))
-  #   topics.append(result)
-  # df = pd.read_pickle(corpus_filename)
-  # title = df['title']
-  # raw = df['raw']
-  # df = pd.DataFrame({'title': [x for x in title], 'raw': [x for x in raw], 'tokens': [x for x in tokens], 'topics': [x for x in topics]})
-  # df.to_pickle(save_name)
-  # print(f"DONE. Saved as {save_name}.")
-
   # START SERVER & AWAIT USER INPUT
   app.run(debug=True, host="127.0.0.1", port=5000)
