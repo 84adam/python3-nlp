@@ -72,37 +72,37 @@ Topic #19: 0.002*"ticket" + 0.002*"confucian" + 0.002*"philosoph" + 0.002*"bicyc
 
 **`evaluate.py`**:
 
-- requires model, corpus, and dictionary files in the current working directory
-- loads the above and calculates Model Perplexity and Model Coherence scores
-- for each a higher score is better:
+- Requires model, corpus, and dictionary files in the current working directory
+- Loads the above and calculates Model Perplexity and Model Coherence scores
+- For each a higher score is better:
   - e.g. for log perplexity: -13.5 is better than -15.5
   - e.g. for coherence: -1.5 is better than -3.5
-- if you train models with different hyperparameters, you can compare the resulting models
-- consider retraining and evaluating models with different values for `num_passes` and `num_topics` at the very least
-- you can use these metrics along with your own best judgment to select the best model to use for topic inference
-- good metrics alone won't necessarily lead to a useful or interpretable set of topics for your model
-- learn more: https://towardsdatascience.com/evaluate-topic-model-in-python-latent-dirichlet-allocation-lda-7d57484bb5d0
+- If you train models with different hyperparameters, you can compare the resulting models
+- Consider retraining and evaluating models with different values for `num_passes` and `num_topics` at the very least
+- You can use these metrics along with your own best judgment to select the best model to use for topic inference
+- Good metrics alone won't necessarily lead to a useful or interpretable set of topics for your model
+- Learn more: https://towardsdatascience.com/evaluate-topic-model-in-python-latent-dirichlet-allocation-lda-7d57484bb5d0
 
 ### Infer Topics of New, Unseen Document
 
 **`infer_topics.py`**:
 
-- requires a text string as input
-- requires that saved gensim model and dictionaries be present in the same directory
+- Requires a text string as input
+- Requires that saved gensim model and dictionaries be present in the same directory
   - `tf-lda.model` and `tf-lda.dict`
   
 ### Compare the Topic Probability Distributions of Any Two Documents
 
 **`jsd_topics.py`**:
 
-- requires two text strings as input (ex. use `"$(cat doc1.txt)" "$(cat doc2.txt)"`)
-  - these are `sys.argv[2]` and `sys.argv[3]` (second and third arguments)
-- requires the Gensim LDA model files and stopword files be available on the local filesystem
+- Requires two text strings as input (ex. use `"$(cat doc1.txt)" "$(cat doc2.txt)"`)
+  - These are `sys.argv[2]` and `sys.argv[3]` (second and third arguments)
+- Requires the Gensim LDA model files and stopword files be available on the local filesystem
   - Provide the PATH for: `tf-lda.model`, `tf-lda.dict`, `stop.txt`, `unstop.txt` as `sys.argv[1]` (first argument)
   - `stop.txt` and `unstop.txt` can be empty, but must exist in the PATH specified
-- returns a Jensen-Shannon Distance score indicating how similar or different the two documents are from each other
-  - a lower score (closer to 0) means the two documents are similar
-  - a higher score (closer to 1) means the documents are different
+- Returns a Jensen-Shannon Distance score indicating how similar or different the two documents are from each other
+  - A lower score (closer to 0) means the two documents are similar
+  - A higher score (closer to 1) means the documents are different
 
 ### Compare Topic Probability Distributions among Any Number of Documents
 
@@ -141,6 +141,12 @@ Jensen-Shannon Distance Matrix:
 - You will be presented with a search form; Enter a query and hit submit
 - The query is combined with a random query_id, source, and timestamp and returned in JSON format after Topic Inference
 - Inferred Query Topics, and the Original Model Topics List, are presented back to the user once this is complete
+
+### Build Candidate Documents Corpus using Pre-trained model: `search_build.py`
+
+- Loads pretrained model and dictionary
+- Removes duplicate rows based on 'title' and 'raw' columns
+- Infers topics of all candidate documents, saving output "compare_docs" corpus as '`{save_docs}.pkl`'
 
 ## Full Search Engine using Pre-trained Model: `search_app.py`
 
