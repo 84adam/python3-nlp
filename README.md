@@ -1,6 +1,8 @@
-# Latent Dirichlet Allocation-based Topic Modeling using Gensim
+# Build a Search Engine with `gensim` using Latent Dirichlet Allocation-based Topic Modeling
 
 SEE: https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation
+
+SEE: https://radimrehurek.com/gensim/
 
 **REQUIRED: Python 3.6+**
 
