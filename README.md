@@ -85,6 +85,17 @@ Topic #19: 0.002*"ticket" + 0.002*"confucian" + 0.002*"philosoph" + 0.002*"bicyc
 - Good metrics alone won't necessarily lead to a useful or interpretable set of topics for your model
 - Learn more: https://towardsdatascience.com/evaluate-topic-model-in-python-latent-dirichlet-allocation-lda-7d57484bb5d0
 
+### Grid Training to Determine Optimal Number of Topics
+
+**`grid_train.py`**:
+
+- Requires a corpus (dataframe) in `.pkl` format, including a 'tokens' column of preprocessed text.
+- Prompts user for min and max `n_topic` values, along with other hyperparameters.
+- Includes evaluation step (log perplexity, cohesion: u_mass, and cohesion: c_v) and logging of model performance metrics after each training loop.
+- NOTE: On systems with fewer resources, `LdaMulticore` may stall or fail to continue after the first training loop. In such cases, it is advisable to try instead with `LdaModel` (single-core version).
+  - default: `lda_model = gensim.models.LdaMulticore(corpus_tfidf, num_topics=n_topics, id2word=dictionary, passes=n_passes, workers=n_workers)`
+  - alternative: `lda_model = gensim.models.LdaModel(corpus_tfidf, num_topics=n_topics, id2word=dictionary, passes=n_passes)`
+
 ### Infer Topics of New, Unseen Document
 
 **`infer_topics.py`**:
