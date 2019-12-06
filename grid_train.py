@@ -204,7 +204,7 @@ if __name__ == '__main__':
   plt.plot(x,y, label='aggregate scores', linewidth=4)
   plt.plot(x,za, label='perplexity/16')
   plt.plot(x,zb, label='u_mass/4')
-  plt.plot(x,zc, label='c_v')
+  plt.plot(x,zc, label='c_v', linewidth=4)
   plt.title('Topic Model Coherence & Perplexity')
   plt.xlabel('Parameters Tested')
   plt.ylabel('Scores')
