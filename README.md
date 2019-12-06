@@ -76,14 +76,17 @@ Topic #19: 0.002*"ticket" + 0.002*"confucian" + 0.002*"philosoph" + 0.002*"bicyc
 
 - Requires model, corpus, and dictionary files in the current working directory
 - Loads the above and calculates Model Perplexity and Model Coherence scores
-- For each a higher score is better:
+- For perplexity and coherence `u_mass` a higher score is better
   - e.g. for log perplexity: -13.5 is better than -15.5
-  - e.g. for coherence: -1.5 is better than -3.5
-- If you train models with different hyperparameters, you can compare the resulting models
-- Consider retraining and evaluating models with different values for `num_passes` and `num_topics` at the very least
+  - e.g. for coherence `u_mass`: -1.5 is better than -3.5
+- For coherence `c_v` a lower score is better
+  - e.g. for coherence `c_v`: 0.55 is better than 0.65
+- **`c_v` has been found to have the highest correlation with human-evaluated topic model coherence:**
+  - see: https://svn.aksw.org/papers/2015/WSDM_Topic_Evaluation/public.pdf
+- Use `grid_train.py` to compare multiple models using these metrics. 
 - You can use these metrics along with your own best judgment to select the best model to use for topic inference
 - Good metrics alone won't necessarily lead to a useful or interpretable set of topics for your model
-- Learn more: https://towardsdatascience.com/evaluate-topic-model-in-python-latent-dirichlet-allocation-lda-7d57484bb5d0
+  - Learn more: https://towardsdatascience.com/evaluate-topic-model-in-python-latent-dirichlet-allocation-lda-7d57484bb5d0
 
 ### Grid Training to Determine Optimal Number of Topics
 
