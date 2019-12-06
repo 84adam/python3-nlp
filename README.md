@@ -96,6 +96,10 @@ Topic #19: 0.002*"ticket" + 0.002*"confucian" + 0.002*"philosoph" + 0.002*"bicyc
   - default: `lda_model = gensim.models.LdaMulticore(corpus_tfidf, num_topics=n_topics, id2word=dictionary, passes=n_passes, workers=n_workers)`
   - alternative: `lda_model = gensim.models.LdaModel(corpus_tfidf, num_topics=n_topics, id2word=dictionary, passes=n_passes)`
 
+**Example Metrics Plot: Performance of Models Trained using from 5 to 20 Topics**
+
+![Metrics Example: Number of Topics](https://github.com/84adam/python3-nlp/blob/master/metrics.png)
+
 ### Infer Topics of New, Unseen Document
 
 **`infer_topics.py`**:
