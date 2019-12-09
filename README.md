@@ -76,11 +76,10 @@ Topic #19: 0.002*"ticket" + 0.002*"confucian" + 0.002*"philosoph" + 0.002*"bicyc
 
 - Requires model, corpus, and dictionary files in the current working directory
 - Loads the above and calculates Model Perplexity and Model Coherence scores
-- For perplexity and coherence `u_mass` a higher score is better
+- A higher score is better
   - e.g. for log perplexity: -13.5 is better than -15.5
   - e.g. for coherence `u_mass`: -1.5 is better than -3.5
-- For coherence `c_v` a lower score is better
-  - e.g. for coherence `c_v`: 0.55 is better than 0.65
+  - e.g. for coherence `c_v`: 0.65 is better than 0.55
 - **`c_v` has been found to have the highest correlation with human-evaluated topic model coherence:**
   - see: https://svn.aksw.org/papers/2015/WSDM_Topic_Evaluation/public.pdf
 - Use `grid_train.py` to compare multiple models using these metrics. 
