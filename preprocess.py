@@ -109,8 +109,8 @@ def lemmatize_stemming(text):
   
 def preprocess(text):
 	result = []
-	for token in gensim.utils.simple_preprocess(text):
-		if token not in my_stopwords and len(token) > 2:
+	for token in gensim.utils.simple_preprocess(text, min_len=2, max_len=17):
+		if token not in my_stopwords:
 			result.append(lemmatize_stemming(token))
 	return result
 
