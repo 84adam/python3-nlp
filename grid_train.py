@@ -172,12 +172,11 @@ if __name__ == '__main__':
 
   # analyze results
   trained_params = [x for x in range_n_topics]
-
-  for x, y in zip(trained_params, grid_results):
-    print(f'param_value={x}; results: {y}')
+  for x, y in zip(trained_params, grid_results):	
+    print(f'param_value={x}; results: {y}')	
 
   print()
-
+  
   x_params = []
   y_results = []
   za = []
@@ -186,25 +185,26 @@ if __name__ == '__main__':
 
   # weigh and scale results from each metric for visualization
   for x, y in zip(trained_params, grid_results):
-    a = abs(y[0]) / 16
-    b = abs(y[1]) / 4
+    avg_c = sum([y[2] for y in grid_results])/len(trained_params)
+    a = abs(y[0]) / (avg_c *27)
+    b = abs(y[1]) / (avg_c *9)
     c = abs(y[2])
-    calc = sum([a, b, c])/3
+    calc = c*2.5 - a - b
     x_params.append(x)
     y_results.append(calc)
     za.append(a)
     zb.append(b)
     zc.append(c)
-
+  
   x = x_params
   y = y_results
-
+  
   # display plot of evaluation metrics by parameter type (default: n_topics)
   plt.figure(figsize=(26,8))
-  plt.plot(x,y, label='aggregate scores', linewidth=4)
-  plt.plot(x,za, label='perplexity/16')
-  plt.plot(x,zb, label='u_mass/4')
-  plt.plot(x,zc, label='c_v', linewidth=4)
+  plt.plot(x,y, label='aggregate scores [HIGHER=BETTER]', linewidth=2)
+  plt.plot(x,za, label='perplexity [ABS; LOWER=BETTER]')
+  plt.plot(x,zb, label='u_mass [ABS; LOWER=BETTER]')
+  plt.plot(x,zc, label='c_v [HIGHER=BETTER]', linewidth=4)
   plt.title('Topic Model Coherence & Perplexity')
   plt.xlabel('Parameters Tested')
   plt.ylabel('Scores')
@@ -212,12 +212,8 @@ if __name__ == '__main__':
   plt.legend(loc=4)
   plt.show()
 
-  print()
-
   for a, b, c in zip(x_params, zc, y_results):
-    if b == min(zc):
+    if b == max(zc):
       print(f'best cv_score = param_value: {a}, score = {b}')
-    if c == min(y_results):
+    if c == max(y_results):
       print(f'best agg_score = param_value: {a}, score = {c}')
-
-  print()
