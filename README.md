@@ -92,6 +92,7 @@ Topic #19: 0.002*"ticket" + 0.002*"confucian" + 0.002*"philosoph" + 0.002*"bicyc
 **`grid_train.py`**:
 
 - Requires a corpus (dataframe) in `.pkl` format, including a 'tokens' column of preprocessed text.
+- Download an example corpus [here](https://www.dropbox.com/s/7tvy01w7n5876n3/gen_wiki_df.pkl?dl=0) containing all the expected columns: 'title', 'raw', 'tokens'.
 - Prompts user for min and max `n_topic` values, along with other hyperparameters.
 - Includes evaluation step (log perplexity, cohesion: u_mass, and cohesion: c_v) and logging of model performance metrics after each training loop.
 - NOTE: On systems with fewer resources, `LdaMulticore` may stall or fail to continue after the first training loop. In such cases, it is advisable to try instead with `LdaModel` (single-core version).
