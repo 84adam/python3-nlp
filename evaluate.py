@@ -27,15 +27,6 @@ def load_corpus():
   corpus = tfidf[bow_corpus]
   return corpus, processed_docs
 
-# calculate model perplexity and coherence scores
-# for perplexity and coherence:u_mass a higher score is better
-# e.g. for log perplexity: -13.5 is better than -15.5
-# e.g. for coherence (u_mass): -1.5 is better than -3.5
-# for coherence:c_v a lower score is better
-# e.g. for coherence (c_v): 0.55 is better than 0.65
-# c_v has been found to have the highest correlation with human-evaluated topic model coherence
-# see: https://svn.aksw.org/papers/2015/WSDM_Topic_Evaluation/public.pdf
-
 def perplex(lda_model, corpus):
   perplexity = lda_model.log_perplexity(corpus)
   return perplexity
