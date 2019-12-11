@@ -1,6 +1,5 @@
 import sys
 import os
-
 import nltk
 import spacy
 import gensim
@@ -8,7 +7,6 @@ import sklearn
 import keras
 import pandas as pd  
 import numpy as np
-
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, SnowballStemmer
 from nltk.stem.porter import *
@@ -23,16 +21,16 @@ from sklearn.feature_extraction import stop_words
 # define stopwords
 
 def add_words(filename):
-    with open(filename) as f:
-        additional_words = f.readlines()
-    additional_words = [x.strip() for x in additional_words]
-    return additional_words
+  with open(filename) as f:
+    additional_words = f.readlines()
+  additional_words = [x.strip() for x in additional_words]
+  return additional_words
 
 def remove_words(filename):
-    with open(filename) as f:
-        unstop = f.readlines()
-    unstop = [x.strip() for x in unstop]
-    return unstop
+  with open(filename) as f:
+    unstop = f.readlines()
+  unstop = [x.strip() for x in unstop]
+  return unstop
 
 def define_stopwords():
 	"""
@@ -40,13 +38,12 @@ def define_stopwords():
 	alternative: set custom 'additional_words' and 'unstop' words (to ignore)
 	function returns a list: 'stopwords'
 	"""
-	
 	# corpus-specific stop words [OPTIONAL]
-        # add 'stop.txt' to local directory, pass as argument 2
-	additional_words = ['nan']
+  # OR: add 'stop.txt' to local directory
+	additional_words = []
 	
 	# don't remove these words which may be important in our context [OPTIONAL]
-        # add 'unstop.txt' to local directory, pass as argument 3
+  # OR: add 'unstop.txt' to local directory
 	unstop = []
 	
 	gen_stop = gensim.parsing.preprocessing.STOPWORDS
@@ -92,10 +89,8 @@ def define_stopwords():
 	all_set = list(set(all_stop))
 	
 	if len(custom_stop) == 0 and len(unstop) == 0:
-		# print(f'sns_set stopwords = {len(sns_set)} words: \nExamples: \n{[x for x in sns_set[0:10]]}\n{[x for x in sns_set[10:20]]}')
 		my_stopwords = sns_set
 	else:
-		# print(f'all_set (custom) stopwords = {len(all_set)} words: \nExamples: \n{[x for x in all_set[0:10]]}\n{[x for x in all_set[10:20]]}')
 		my_stopwords = all_set
 	
 	return my_stopwords
@@ -131,7 +126,7 @@ def sns_preprocess(filename):
 	... using 'df_field_col_len()' function
 	
 	preprocess only the longest text column
-	return 'processed_docs'
+	return 'processed_docs' tokens series and dataframe as 'df'
 	"""  
 	corpus_filename = str(filename)
 	df = pd.read_csv(corpus_filename)
@@ -140,7 +135,7 @@ def sns_preprocess(filename):
 	print("Initializing preprocessing...")
 	processed_docs = corpus.map(preprocess)  
 	print("Built: `processed_docs` Pandas Series object...")
-	return processed_docs
+	return processed_docs, df
     
 def df_field_col_len(df):
 	"""
@@ -151,7 +146,6 @@ def df_field_col_len(df):
 	contains documents or text strings that can be 
 	preprocessed and analyzed.
 	"""
-    
 	# Get average length of each field (per column) in data set
 	sum_i_list = [[] for i in range(len(list(df.columns.values)))]
 	avg_len_i_list = [[] for i in range(len(list(df.columns.values)))]
@@ -169,7 +163,6 @@ def df_field_col_len(df):
 		print("Average Length of Field '{0:<15s}': \t{1:.2f}".format(x.replace("\n", ""), y[0]))
 	
 	# Locate longest average field length (per cell) from all columns
-	
 	for x, y in zip(list(df.columns.values), avg_len_i_list):
 		if [y[0]] == max(avg_len_i_list):
 			print("Longest average field length by word count found in '{0}' column (avg. {1:.0f} words).".format(x.replace("\n", ""), y[0]))
@@ -185,43 +178,56 @@ def df_field_col_len(df):
 	df['index1'] = df.index
 	doc_index = df['index1']
 	corpus = df[longest]
-  
 	return corpus
   
-
 if __name__ == '__main__':
+  raw_docs = input("Enter name of .csv file to be processed: ")
+  out_file_series = input("Save 'tokens' series as (enter filename, e.g. 'processed_docs.pkl'): ")
+  out_file_df = input("Save corpus with new 'tokens' column as (enter filename, e.g. 'processed_df.pkl'): ")
+  my_stopwords = define_stopwords()
+  print(f'Default Stopwords List = {len(my_stopwords)} words.')
+  print(f'Example: {[x for x in my_stopwords[0:5]]}.')
+  print(f'Example: {[x for x in my_stopwords[20:26]]}.')
+  print(f'Example: {[x for x in my_stopwords[-6:-1]]}.')
+  
+  print("\nIf you wish to ADD custom stop words, list them in a `stop.txt` file in the current directory.")
+  print("If you wish to REMOVE stop words from the default set, list them in an `unstop.txt` file in the current directory.\n")
+  
+  if 'stop.txt' in os.listdir():
+    print(f"Adding custom stopwords from 'stop.txt'...")
+    new_words = add_words('stop.txt')
+  else:
+    print("No additional words to add, or no 'stop.txt' file found.")
 
-    filename1 = str(sys.argv[1]) # csv file to be processed
-    filename2 = str(sys.argv[2]) # additional stopwords (stop.txt)
-    filename3 = str(sys.argv[3]) # words to retain (unstop.txt)
-
-    files = [filename1, filename2, filename3]
-
-    for i in files:
-        if i not in os.listdir():
-            print(f'{i} not found in {os.getcwd()} directory. Please check and try again.')
-
-    my_stopwords = define_stopwords()
+  if 'unstop.txt' in os.listdir():
+    print(f"Removing stopwords as per 'unstop.txt'...")
+    new_unstop = remove_words('unstop.txt')
+  else:
+    print("No words to remove, or no 'unstop.txt' file found.")
     
-    print(f'Adding custom stopwords from {filename2}...')
-    new_words = add_words(filename2)
+  for i in new_words:
+    my_stopwords.append(i)
     
-    print(f'Removing stopwords as per {filename3}...')
-    new_unstop = remove_words(filename3)
-    
-    for i in new_words:
-        my_stopwords.append(i)
-    
-    my_stopwords = [w for w in my_stopwords if w not in new_unstop]
-    my_stopwords = list(set(my_stopwords))
+  my_stopwords = [w for w in my_stopwords if w not in new_unstop]
+  my_stopwords = list(set(my_stopwords))
 
-    print(f'Total stopwords = {len(my_stopwords)} words.')
-    print(f'Example: {[x for x in my_stopwords[0:5]]}.')
-    print(f'Example: {[x for x in my_stopwords[-6:-1]]}.')
+  print(f'Total Stopwords = {len(my_stopwords)} words.')
+  print(f'Example: {[x for x in my_stopwords[0:5]]}.')
+  print(f'Example: {[x for x in my_stopwords[20:26]]}.')
+  print(f'Example: {[x for x in my_stopwords[-6:-1]]}.')
 
-    print(f'Processing {filename1}...')
-    processed_docs = sns_preprocess(filename1)
-    save_file = "processed_docs.pkl"
-    processed_docs.to_pickle(save_file)
-    print(f'Processing complete. Saved to {os.getcwd()}/{save_file}.')
-    print(f'To re-load, use pandas.read_pickle("/PATH/TO/{save_file}")')
+  print(f'\nProcessing {raw_docs}...')
+  processed_data = sns_preprocess(raw_docs)
+  processed_docs = processed_data[0]
+  processed_df = processed_data[1]
+  processed_df = processed_df.assign(tokens=[x for x in processed_docs])
+  
+  # save tokens series object as .pkl
+  processed_docs.to_pickle(out_file_series)
+
+  # save corpus with tokens column as .pkl
+  processed_df.to_pickle(out_file_df)
+
+  # notify upon completion
+  print(f'Processing complete. Saved to {os.getcwd()}: {out_file_series}, {out_file_df}.')
+  print(f'To re-load, use pandas.read_pickle("/PATH/TO/<filename>.pkl")')
