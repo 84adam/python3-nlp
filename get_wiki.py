@@ -65,49 +65,64 @@ def wiki_gen_links(f, parser):
   return set_links_list
 
 # BASE URLs FROM WHICH TO SCRAPE ADDITIONAL ARTICLES
-# The set of URLs below are geared towards business, engineering, and sales
 
-url_01 = "https://en.wikipedia.org/wiki/Graphic_design"
-url_02 = "https://en.wikipedia.org/wiki/Finance"
-url_03 = "https://en.wikipedia.org/wiki/Sales"
-url_04 = "https://en.wikipedia.org/wiki/Customer_service"
-url_05 = "https://en.wikipedia.org/wiki/Accounting"
-url_06 = "https://en.wikipedia.org/wiki/Business_administration"
-
-url_07 = "https://en.wikipedia.org/wiki/Engineering"
-url_08 = "https://en.wikipedia.org/wiki/Marketing"
-url_09 = "https://en.wikipedia.org/wiki/Law"
-url_10 = "https://en.wikipedia.org/wiki/Business"
-url_11 = "https://en.wikipedia.org/wiki/Manufacturing"
-url_12 = "https://en.wikipedia.org/wiki/Value-added_reseller"
-
-url_13 = "https://en.wikipedia.org/wiki/Technology"
-url_14 = "https://en.wikipedia.org/wiki/User_experience"
-url_15 = "https://en.wikipedia.org/wiki/Logic"
-url_16 = "https://en.wikipedia.org/wiki/Communication"
-url_17 = "https://en.wikipedia.org/wiki/Industry"
-url_18 = "https://en.wikipedia.org/wiki/Electronics"
-
-url_19 = "https://en.wikipedia.org/wiki/Energy"
-url_20 = "https://en.wikipedia.org/wiki/Transport"
-url_21 = "https://en.wikipedia.org/wiki/Software"
-url_22 = "https://en.wikipedia.org/wiki/Mathematics"
-url_23 = "https://en.wikipedia.org/wiki/System"
-url_24 = "https://en.wikipedia.org/wiki/Knowledge"
-
-base_urls = [url_01, url_02, url_03, url_04, url_05, url_06]
-add_urls1 = [url_07, url_08, url_09, url_10, url_11, url_12]
-add_urls2 = [url_13, url_14, url_15, url_16, url_17, url_18]
-add_urls3 = [url_19, url_20, url_21, url_22, url_23, url_24]
-
-for i in add_urls1:
-  base_urls.append(i)
-  
-for i in add_urls2:
-  base_urls.append(i)
-  
-for i in add_urls3:
-  base_urls.append(i)
+base_urls = ['https://en.wikipedia.org/wiki/Graphic_design', 'https://en.wikipedia.org/wiki/Marketing', 
+             'https://en.wikipedia.org/wiki/Communication', 'https://en.wikipedia.org/wiki/Sales', 
+             'https://en.wikipedia.org/wiki/Finance', 'https://en.wikipedia.org/wiki/Accounting', 
+             'https://en.wikipedia.org/wiki/Law', 'https://en.wikipedia.org/wiki/Business', 
+             'https://en.wikipedia.org/wiki/Business_administration', 'https://en.wikipedia.org/wiki/Value-added_reseller', 
+             'https://en.wikipedia.org/wiki/Customer_service', 'https://en.wikipedia.org/wiki/User_experience', 
+             'https://en.wikipedia.org/wiki/Energy', 'https://en.wikipedia.org/wiki/Transport', 
+             'https://en.wikipedia.org/wiki/Industry', 'https://en.wikipedia.org/wiki/Manufacturing', 
+             'https://en.wikipedia.org/wiki/Electronics', 'https://en.wikipedia.org/wiki/Software', 
+             'https://en.wikipedia.org/wiki/Engineering', 'https://en.wikipedia.org/wiki/Technology', 
+             'https://en.wikipedia.org/wiki/Mathematics', 'https://en.wikipedia.org/wiki/System', 
+             'https://en.wikipedia.org/wiki/Knowledge', 'https://en.wikipedia.org/wiki/Logic', 
+             'https://en.wikipedia.org/wiki/Engineer', 'https://en.wikipedia.org/wiki/Microcontroller', 
+             'https://en.wikipedia.org/wiki/Industrial_control_system', 'https://en.wikipedia.org/wiki/PID_controller', 
+             'https://en.wikipedia.org/wiki/Control_loop', 'https://en.wikipedia.org/wiki/Programmable_logic_controller', 
+             'https://en.wikipedia.org/wiki/Assembly_line', 'https://en.wikipedia.org/wiki/Robotics', 
+             'https://en.wikipedia.org/wiki/Petroleum_engineering', 'https://en.wikipedia.org/wiki/Industrial_engineering', 
+             'https://en.wikipedia.org/wiki/Open-source_software', 'https://en.wikipedia.org/wiki/Electrical_engineering', 
+             'https://en.wikipedia.org/wiki/Computer_engineering', 'https://en.wikipedia.org/wiki/Computer_science', 
+             'https://en.wikipedia.org/wiki/Mechanical_engineering', 'https://en.wikipedia.org/wiki/Microsoft_Windows', 
+             'https://en.wikipedia.org/wiki/Operating_system', 'https://en.wikipedia.org/wiki/Computer_program', 
+             'https://en.wikipedia.org/wiki/Human%E2%80%93computer_interaction', 'https://en.wikipedia.org/wiki/History', 
+             'https://en.wikipedia.org/wiki/Art', 'https://en.wikipedia.org/wiki/Music', 'https://en.wikipedia.org/wiki/Food', 
+             'https://en.wikipedia.org/wiki/Education', 'https://en.wikipedia.org/wiki/Health', 
+             'https://en.wikipedia.org/wiki/Medicine', 'https://en.wikipedia.org/wiki/Politics', 
+             'https://en.wikipedia.org/wiki/Management', 'https://en.wikipedia.org/wiki/Chemistry', 
+             'https://en.wikipedia.org/wiki/Biology', 'https://en.wikipedia.org/wiki/Physics', 
+             'https://en.wikipedia.org/wiki/Geology', 'https://en.wikipedia.org/wiki/Astronomy', 
+             'https://en.wikipedia.org/wiki/Anthropology', 'https://en.wikipedia.org/wiki/Sociology', 
+             'https://en.wikipedia.org/wiki/Psychology', 'https://en.wikipedia.org/wiki/Science', 
+             'https://en.wikipedia.org/wiki/Formal_science', 'https://en.wikipedia.org/wiki/Natural_science', 
+             'https://en.wikipedia.org/wiki/Social_science', 'https://en.wikipedia.org/wiki/Game_theory', 
+             'https://en.wikipedia.org/wiki/Network_theory', 'https://en.wikipedia.org/wiki/Artificial_neural_network', 
+             'https://en.wikipedia.org/wiki/Broadcast_network', 'https://en.wikipedia.org/wiki/Electrical_network', 
+             'https://en.wikipedia.org/wiki/Social_networking_service', 
+             'https://en.wikipedia.org/wiki/Telecommunications_network', 'https://en.wikipedia.org/wiki/Computer_network', 
+             'https://en.wikipedia.org/wiki/Transport_network', 'https://en.wikipedia.org/wiki/Money', 
+             'https://en.wikipedia.org/wiki/Bitcoin', 'https://en.wikipedia.org/wiki/Gold', 
+             'https://en.wikipedia.org/wiki/Silver', 'https://en.wikipedia.org/wiki/Fiat_money', 
+             'https://en.wikipedia.org/wiki/Bank', 'https://en.wikipedia.org/wiki/Economics', 
+             'https://en.wikipedia.org/wiki/Production_(economics)', 'https://en.wikipedia.org/wiki/Service_(economics)', 
+             'https://en.wikipedia.org/wiki/Utility', 'https://en.wikipedia.org/wiki/The_arts', 
+             'https://en.wikipedia.org/wiki/Philosophy', 'https://en.wikipedia.org/wiki/Theatre', 
+             'https://en.wikipedia.org/wiki/Film', 'https://en.wikipedia.org/wiki/Dance', 
+             'https://en.wikipedia.org/wiki/Fine_art', 'https://en.wikipedia.org/wiki/Applied_arts', 
+             'https://en.wikipedia.org/wiki/Linguistics', 'https://en.wikipedia.org/wiki/Slang', 
+             'https://en.wikipedia.org/wiki/Sarcasm', 'https://en.wikipedia.org/wiki/Culture', 
+             'https://en.wikipedia.org/wiki/Security', 'https://en.wikipedia.org/wiki/Media', 
+             'https://en.wikipedia.org/wiki/List_of_countries_by_spoken_languages', 'https://en.wikipedia.org/wiki/Humanities', 
+             'https://en.wikipedia.org/wiki/Sport', 'https://en.wikipedia.org/wiki/Relationship', 
+             'https://en.wikipedia.org/wiki/Religion', 'https://en.wikipedia.org/wiki/Faith', 
+             'https://en.wikipedia.org/wiki/Spirituality', 'https://en.wikipedia.org/wiki/Literature', 
+             'https://en.wikipedia.org/wiki/Fiction', 'https://en.wikipedia.org/wiki/Nonfiction', 
+             'https://en.wikipedia.org/wiki/Classics', 'https://en.wikipedia.org/wiki/Western_world', 
+             'https://en.wikipedia.org/wiki/Eastern_world', 'https://en.wikipedia.org/wiki/Renaissance', 
+             'https://en.wikipedia.org/wiki/History_by_period', 'https://en.wikipedia.org/wiki/List_of_time_periods', 
+             'https://en.wikipedia.org/wiki/Category:History_of_science_and_technology_by_country']
 
 # COLLECTION OF LINKS FROM WIKIPEDIA ARTICLES
 
