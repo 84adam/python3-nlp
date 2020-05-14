@@ -177,4 +177,7 @@ Jensen-Shannon Distance Matrix:
 
 ## Example of Latent Semantic Indexing (LSI) and Similarity Queries
 
-- See: `LSI_test_example.py` (WIP)
+Cosine similarity is used to measure the similarity between two documents:
+- Range: -1 to 1; the greater the score, the more similar: e.g. 0.9981 is very similar
+- LSI is another means to find similar documents even when the words in the query are not present in the potentially relevant documents.
+- **See: `LSI_test_example.py` (WIP)**
