@@ -1,4 +1,4 @@
-# Build a Search Engine with `gensim` using Latent Dirichlet Allocation-based Topic Modeling
+# Build a Search Engine with `gensim` using Topic Modeling: Latent Dirichlet Allocation and Latent Semantic Indexing
 
 SEE: https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation
 
@@ -174,3 +174,7 @@ Jensen-Shannon Distance Matrix:
 - Loads a model and set of candidate documents of your choosing.
 - User input query is processed, modeled, and compared to candidate documents. Distance between the query and a given candidate's topic probability distributions is measured using Jensen-Shannon Distance.
 - The top 1% of candidate documents are returned to the user as search results.
+
+## Example of Latent Semantic Indexing (LSI) and Similarity Queries
+
+- See: `LSI_test_example.py` (WIP)
